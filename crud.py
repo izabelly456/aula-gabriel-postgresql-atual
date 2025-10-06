@@ -10,14 +10,31 @@ def criar_aluno(nome, idade):
                 cursor.execute(
                 "INSERT INTO alunos (nome, idade) VALUES (%s, %s)",
                 (nome, idade)
-            )
+                )
                 conexao.commit()
-            except Exception as e:
+            except Exception as erro:
                     print(f"Erro ao criar aluno: {erro}")
             finally:
                 cursor.close()
                 conexao.close()
+                
+                
+def listar_alunos():
+    conexao, cursor = conectar()
+    if conexao:
+            try:
+                cursor.execute("SELECT * FROM alunos ORDER BY id")
+                alunos = cursor.fetchall()
+                return alunos
+            except Exception as erro:
+                    print(f"Erro ao listar alunos: {erro}")
+                    return []
+            finally:
+                cursor.close()
+                conexao.close()
+                
 
+    
     
 
             
