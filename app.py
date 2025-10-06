@@ -49,4 +49,4 @@ elif menu == "Deletar":
             st.success("Aluno deletado com sucesso!")
     else:
         st.info("Nenhum aluno encontrado.")
-          
+
